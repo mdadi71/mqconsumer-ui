@@ -1,0 +1,25 @@
+:host {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .side-menu {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .side-menu button {
+    justify-content: flex-start;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
