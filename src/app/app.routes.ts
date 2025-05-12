@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { MessageListComponent } from './components/messages/message-list/message-list.component';
-import { PartnerComponent } from './components/partner/partner.component';
+import { PartnerListComponent } from './components/partners/partner-list/partner-list.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'messages', pathMatch: 'full' },
@@ -8,7 +8,7 @@ export const routes: Routes = [
   { 
     path: 'partners', 
     children: [
-      { path: '', component: PartnerComponent }
+      { path: '', component: PartnerListComponent }
     ]
   },
   { path: '**', redirectTo: '/messages' }

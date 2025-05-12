@@ -1,0 +1,43 @@
+<mat-card>
+    <mat-card-title>Ajouter un partenaire</mat-card-title>
+    <form [formGroup]="partnerForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Alias</mat-label>
+        <input matInput formControlName="alias">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Direction</mat-label>
+        <mat-select formControlName="direction">
+          <mat-option *ngFor="let d of directions" [value]="d">{{ d }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Application</mat-label>
+        <input matInput formControlName="application">
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Flow Type</mat-label>
+        <mat-select formControlName="processedFlowType">
+          <mat-option *ngFor="let f of flowTypes" [value]="f">{{ f }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="3"></textarea>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="partnerForm.invalid">
+        Enregistrer
+      </button>
+    </form>
+</mat-card>
+  
