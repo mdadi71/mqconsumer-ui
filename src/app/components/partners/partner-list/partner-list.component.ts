@@ -10,7 +10,8 @@ import { PartnerService } from '../../../services/partner.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { AddPartnerComponent } from '../add-partner/add-partner/add-partner.component';
+import { AddPartnerComponent } from '../add-partner/add-partner.component';
+import { DeletePartnerComponent } from '../delete-partner/delete-partner.component';
 
 @Component({
   selector: 'app-partner',
@@ -29,7 +30,7 @@ import { AddPartnerComponent } from '../add-partner/add-partner/add-partner.comp
   styleUrl: './partner-list.component.scss'
 })
 export class PartnerListComponent {
-  displayedColumns: string[] = ['alias', 'type', 'direction', 'application', 'processedFlowType', 'description'];
+  displayedColumns: string[] = ['alias', 'type', 'direction', 'application', 'processedFlowType', 'description', 'actions'];
   dataSource = new MatTableDataSource<Partner>();
   pagination = {
     currentPage: 0,
@@ -78,6 +79,19 @@ export class PartnerListComponent {
   }
 
   deletePartner(id: number): void {
+    const dialogRef = this.dialog.open(DeletePartnerComponent);
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) { 
+        this.partnerService.deletePartner(id).subscribe(() => {
+          this.loadData(); 
+        });
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
